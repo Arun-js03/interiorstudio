@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+  --color-bg: #fdf9f3;
+  --color-dark: #1a1714;
+  --color-gold: #c4922e;
+  --color-text: #3d3530;
+  --color-muted: #8a7f78;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f9f0e1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c4922e;
+  border-radius: 3px;
+}
+
+/* Utility classes */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Gold divider */
+.gold-line {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+/* Hover image zoom */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation link underline animation */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Gold button */
+.btn-gold {
+  @apply inline-flex items-center gap-2 bg-transparent border border-[#c4922e] text-[#c4922e] px-8 py-3 text-sm tracking-[0.15em] uppercase transition-all duration-300;
+}
+.btn-gold:hover {
+  @apply bg-[#c4922e] text-white;
+}
+
+.btn-dark {
+  @apply inline-flex items-center gap-2 bg-[#1a1714] text-[#fdf9f3] px-8 py-3 text-sm tracking-[0.15em] uppercase transition-all duration-300;
+}
+.btn-dark:hover {
+  @apply bg-[#c4922e];
+}
+
+/* Section padding */
+.section-pad {
+  @apply py-20 md:py-28 lg:py-36;
+}
+
+/* Container */
+.container-xl {
+  @apply max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16;
+}
+
+/* Card hover shadow */
+.card-hover {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+}
+
+/* Overlay */
+.overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20,15,10,0.75) 0%, rgba(20,15,10,0.2) 50%, transparent 100%);
+}
+
+/* Image placeholder gradient */
+.img-placeholder {
+  background: linear-gradient(135deg, #e8c99a 0%, #d2a679 50%, #be8a59 100%);
+}
